@@ -52,22 +52,29 @@ class LedgerStorage:
         rows = self._read_table(table_name)
         is_ledger = self.schemas[table_name]['is_ledger']
         updated = False
+        new_rows = []
         
-        for i, row in enumerate(rows):
+        for row in rows:
             if self._match_where(row, where) and row.get('_is_active', True):
                 updated = True
                 if is_ledger:
-                    rows[i]['_is_active'] = False
+                    # Mark old row as inactive
+                    row['_is_active'] = False
+                    new_rows.append(row)
+                    # Create new version
                     new_row = row.copy()
                     new_row.update(set_clause)
                     new_row['_version'] = row.get('_version', 1) + 1
                     new_row['_created_at'] = datetime.now().isoformat()
                     new_row['_is_active'] = True
-                    rows.append(new_row)
+                    new_rows.append(new_row)
                 else:
-                    rows[i].update(set_clause)
+                    row.update(set_clause)
+                    new_rows.append(row)
+            else:
+                new_rows.append(row)
         
-        self._write_table(table_name, rows)
+        self._write_table(table_name, new_rows)
         return updated
     
     def delete_rows(self, table_name: str, where: Dict):
