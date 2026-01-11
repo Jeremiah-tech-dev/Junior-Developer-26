@@ -1,0 +1,330 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.loading-top {
+  height: 30%;
+  background: linear-gradient(to bottom, #8B0000 0%, rgba(139, 0, 0, 0.5) 50%, transparent 100%);
+  animation: emergeTop 3s ease-in-out infinite;
+}
+
+.loading-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+.loading-title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  z-index: 10;
+}
+
+.loading-title .ledger {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+  animation: glow 2s ease-in-out infinite;
+  letter-spacing: 8px;
+}
+
+.loading-title .db {
+  color: #FF0000;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.5);
+  animation: glowRed 2s ease-in-out infinite;
+  letter-spacing: 8px;
+}
+
+.loading-title .powered {
+  font-size: 24px;
+  color: #A9A9A9;
+  letter-spacing: 4px;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+.loading-title .pesapal {
+  font-size: 32px;
+  color: #00FF00;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.5);
+  animation: glowGreen 2s ease-in-out infinite;
+  letter-spacing: 6px;
+  font-weight: 900;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes glowRed {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8);
+  }
+}
+
+@keyframes glowGreen {
+  0%, 100% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 60px rgba(0, 255, 0, 0.8);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.launch-btn {
+  padding: 15px 50px;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #8B0000, #FF0000);
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+  }
+}
+
+.launch-btn:hover {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  color: #8B0000;
+  border-color: #8B0000;
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+}
+
+.loading-bottom {
+  height: 30%;
+  background: linear-gradient(to top, #808080 0%, rgba(128, 128, 128, 0.6) 40%, rgba(128, 128, 128, 0.3) 70%, transparent 100%);
+  animation: emergeBottom 3s ease-in-out infinite;
+}
+
+@keyframes emergeTop {
+  0%, 100% {
+    background: linear-gradient(to bottom, #8B0000 0%, rgba(139, 0, 0, 0.5) 50%, transparent 100%);
+  }
+  50% {
+    background: linear-gradient(to bottom, #FF0000 0%, rgba(255, 0, 0, 0.7) 50%, transparent 100%);
+  }
+}
+
+@keyframes emergeBottom {
+  0%, 100% {
+    background: linear-gradient(to top, #808080 0%, rgba(128, 128, 128, 0.6) 40%, rgba(128, 128, 128, 0.3) 70%, transparent 100%);
+  }
+  50% {
+    background: linear-gradient(to top, #A9A9A9 0%, rgba(169, 169, 169, 0.7) 40%, rgba(169, 169, 169, 0.4) 70%, transparent 100%);
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.section {
+  background: #f8f9fa;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}
+
+input, select {
+  padding: 8px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  margin: 5px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.loading-screen .launch-btn:hover {
+  background: #fff !important;
+  color: #8B0000 !important;
+  border-color: #8B0000 !important;
+}
+
+.wallet {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px 0;
+  background: white;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #007bff;
+  color: white;
+}
+
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 32px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  animation: popIn 0.3s ease-out;
+  z-index: 1000;
+  min-width: 250px;
+  text-align: center;
+}
+
+.toast.success {
+  background: #28a745;
+}
+
+.toast.error {
+  background: #dc3545;
+}
+
+.toast.info {
+  background: #17a2b8;
+}
+
+@keyframes popIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  min-width: 80px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
